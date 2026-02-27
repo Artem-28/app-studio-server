@@ -20,8 +20,11 @@ export class AttributeEntity extends BaseEntity {
   })
   public code: AttributeCode;
 
-  @Column({ nullable: true, type: 'varchar' })
+  @Column({ nullable: true, type: 'text' })
   public value: string | null;
+
+  @Column({ type: 'boolean' })
+  public publish: boolean;
 
   @OneToMany(() => AttributeEntity, (attribute) => attribute.parent, {
     onDelete: 'CASCADE',

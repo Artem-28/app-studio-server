@@ -4,10 +4,11 @@ import {
   IAttribute,
 } from '@/models/attribute/attribute.interface';
 import {
+  IsBoolean,
   IsDefined,
   IsEnum,
   IsNumber,
-  IsOptional,
+  IsOptional, IsString,
 } from 'class-validator';
 
 export class AttributeAggregate
@@ -25,7 +26,12 @@ export class AttributeAggregate
   order: number;
 
   @IsOptional()
+  @IsString()
   value: string | null = null;
+
+  @IsOptional()
+  @IsBoolean()
+  publish: boolean = true;
 
   @IsOptional()
   attributes: AttributeAggregate[] = [];
@@ -38,11 +44,11 @@ export class AttributeAggregate
 
   public update(data: Partial<IAttribute>) {
     const { attributes, ...root } = data;
+    super.update(root);
 
     if (attributes) {
       this.setAttributes(attributes);
     }
-    super.update(root);
   }
 
   public setAttributes(attributes: IAttribute[]) {
@@ -74,6 +80,7 @@ export class AttributeAggregate
       order: this.order,
       code: this.code,
       value: this.value,
+      publish: this.publish,
       attributes: this.attributes.map((attr) => attr.instance),
       created_at: this.created_at,
       updated_at: this.updated_at,

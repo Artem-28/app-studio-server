@@ -8,13 +8,15 @@ export enum AttributeCode {
 }
 
 export interface IAttributeRoot extends IBaseEntity {
-  parent_id: number | null;
+  parent_id?: number | null;
 
   order: number;
 
   code: AttributeCode;
 
-  value: string | null;
+  value?: string | null;
+
+  publish?: boolean;
 }
 
 export interface IAttributeRelation {

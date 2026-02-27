@@ -21,8 +21,13 @@ const table = hCreateTable(ATTRIBUTE_TABLE, [
   {
     name: 'value',
     isNullable: true,
-    type: 'varchar',
+    type: 'text',
     default: null,
+  },
+  {
+    name: 'publish',
+    type: 'boolean',
+    default: true,
   },
 ]);
 

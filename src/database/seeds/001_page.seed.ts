@@ -8,13 +8,13 @@ export class PageSeed implements Seeder {
     const repository = dataSource.getRepository(PageEntity);
     const { data } = resource;
 
-    const pages: IPageRoot[] = [];
+    const items: IPageRoot[] = [];
 
     for (let i = 0; i < data.length; i++) {
       const item = PageAggregate.create(data[i]);
-      pages.push(item.instance);
+      items.push(item.instance);
     }
 
-    await repository.save(pages);
+    return repository.save(items);
   }
 }

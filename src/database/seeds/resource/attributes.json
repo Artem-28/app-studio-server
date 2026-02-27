@@ -25,6 +25,7 @@
         {
           "order": 200,
           "code": "section",
+          "value": "card",
           "attributes": [
             {
               "order": 100,
@@ -41,6 +42,7 @@
         {
           "order": 300,
           "code": "section",
+          "value": "card",
           "attributes": [
             {
               "order": 100,
@@ -57,6 +59,7 @@
         {
           "order": 400,
           "code": "section",
+          "value": "card",
           "attributes": [
             {
               "order": 100,
@@ -73,6 +76,7 @@
         {
           "order": 500,
           "code": "section",
+          "value": "card",
           "attributes": [
             {
               "order": 100,
