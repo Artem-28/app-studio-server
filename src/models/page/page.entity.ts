@@ -1,10 +1,15 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
-import { BaseEntity } from '@/models/base';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 export const PAGE_TABLE = 'pages';
 
 @Entity({ name: PAGE_TABLE })
-export class PageEntity extends BaseEntity {
+export class PageEntity {
   @PrimaryColumn({ unique: true })
   public slug: string;
 
@@ -22,4 +27,10 @@ export class PageEntity extends BaseEntity {
 
   @Column({ name: 'og_description', nullable: true })
   public og_description: string;
+
+  @CreateDateColumn({ name: 'created_at' })
+  public created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  public updated_at: Date;
 }

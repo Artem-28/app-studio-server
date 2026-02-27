@@ -7,11 +7,11 @@ import { IBaseEntity} from '@/models/base/base.interface';
 
 export abstract class BaseEntity implements IBaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @CreateDateColumn({ name: 'created_at' })
-  created_at: Date;
+  public created_at: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updated_at: Date;
+  public updated_at: Date;
 }

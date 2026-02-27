@@ -1,6 +1,4 @@
-import { IBaseEntity } from '@/models/base';
-
-export interface IPage extends IBaseEntity {
+export interface IPage {
   slug: string;
 
   meta_title: string;
@@ -12,4 +10,8 @@ export interface IPage extends IBaseEntity {
   og_title: string | null;
 
   og_description: string | null;
+
+  created_at: Date;
+
+  updated_at: Date;
 }

@@ -28,8 +28,8 @@ export const options = (): DataSourceOptions & SeederOptions => {
       ),
     ],
     seeds: [
-      join(process.cwd(), 'dist', 'data-base', 'seeds', '**', '*.seed.js'),
-      join(process.cwd(), 'dist', 'data-base', 'fake', '**', '*.seed.js'),
+      join(process.cwd(), 'dist', 'database', 'seeds', '**', '*.seed.js'),
+      join(process.cwd(), 'dist', 'database', 'fake', '**', '*.seed.js'),
     ],
     migrationsRun: false,
     // autoLoadEntities: true,

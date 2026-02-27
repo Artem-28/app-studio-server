@@ -1,13 +1,15 @@
 import { IPage } from '@/models/page/page.interface';
 import {
+  IsDate,
   IsDefined,
   IsNotEmpty,
   IsOptional,
   IsString,
+  validateSync,
 } from 'class-validator';
-import { BaseAggregate } from '@/models/base';
+import { DomainError } from '@/common/error';
 
-export class PageAggregate extends BaseAggregate<IPage> implements IPage {
+export class PageAggregate implements IPage {
   @IsString()
   @IsDefined()
   @IsNotEmpty()
@@ -38,15 +40,35 @@ export class PageAggregate extends BaseAggregate<IPage> implements IPage {
   @IsNotEmpty()
   og_description: string;
 
+  @IsDate()
+  created_at = new Date();
+
+  @IsDate()
+  updated_at = new Date();
+
   static create(data: Partial<IPage>) {
     const _entity = new PageAggregate();
     _entity.update(data);
     return _entity;
   }
 
+  public update(data: Partial<IPage>) {
+    const entries = Object.entries(data);
+    if (entries.length === 0) return;
+
+    entries.forEach(([key, value]) => {
+      this[key] = value;
+    });
+    this.updated_at = new Date();
+
+    const errors = validateSync(this, { whitelist: true });
+    if (!!errors.length) {
+      throw new DomainError(errors);
+    }
+  }
+
   get instance(): IPage {
     return {
-      id: this.id,
       slug: this.slug,
       meta_title: this.meta_description,
       meta_description: this.meta_description,
