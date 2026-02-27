@@ -1,4 +1,4 @@
-import { IPage } from '@/models/page/page.interface';
+import { IPage, IPageRoot } from '@/models/page/page.interface';
 import {
   IsDate,
   IsDefined,
@@ -8,6 +8,7 @@ import {
   validateSync,
 } from 'class-validator';
 import { DomainError } from '@/common/error';
+import { AttributeAggregate } from '@/models/attribute';
 
 export class PageAggregate implements IPage {
   @IsString()
@@ -46,6 +47,9 @@ export class PageAggregate implements IPage {
   @IsDate()
   updated_at = new Date();
 
+  @IsOptional()
+  attributes: AttributeAggregate[] = [];
+
   static create(data: Partial<IPage>) {
     const _entity = new PageAggregate();
     _entity.update(data);
@@ -67,7 +71,7 @@ export class PageAggregate implements IPage {
     }
   }
 
-  get instance(): IPage {
+  get instance(): IPageRoot {
     return {
       slug: this.slug,
       meta_title: this.meta_description,

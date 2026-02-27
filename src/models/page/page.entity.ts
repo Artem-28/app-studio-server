@@ -22,11 +22,11 @@ export class PageEntity {
   @Column({ name: 'h1' })
   public h1: string;
 
-  @Column({ name: 'og_title', nullable: true })
-  public og_title: string;
+  @Column({ name: 'og_title', nullable: true, type: 'varchar' })
+  public og_title: string | null;
 
-  @Column({ name: 'og_description', nullable: true })
-  public og_description: string;
+  @Column({ name: 'og_description', nullable: true, type: 'varchar' })
+  public og_description: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   public created_at: Date;

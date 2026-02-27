@@ -1,6 +1,6 @@
 import { Seeder } from 'typeorm-extension';
 import * as resource from '../../database/seeds/resource/pages.json';
-import { PageAggregate, PageEntity } from '@/models/page';
+import { IPageRoot, PageAggregate, PageEntity } from '@/models/page';
 import { DataSource } from 'typeorm';
 
 export class PageSeed implements Seeder {
@@ -8,11 +8,11 @@ export class PageSeed implements Seeder {
     const repository = dataSource.getRepository(PageEntity);
     const { data } = resource;
 
-    const pages: PageAggregate[] = [];
+    const pages: IPageRoot[] = [];
 
     for (let i = 0; i < data.length; i++) {
       const item = PageAggregate.create(data[i]);
-      pages.push(item);
+      pages.push(item.instance);
     }
 
     await repository.save(pages);
