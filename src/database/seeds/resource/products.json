@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "title": "Многостраничный сайт",
+      "prices": [
+        { "type": "start_price", "value": 54000.00 }
+      ]
+    },
+    {
+      "title": "Одностраничный сайт",
+      "prices": [
+        { "type": "start_price", "value": 18000.00 }
+      ]
+    },
+    {
+      "title": "Интернет-магазин",
+      "prices": [
+        { "type": "start_price", "value": 124000.00 }
+      ]
+    },
+    {
+      "title": "Мобильное приложение",
+      "prices": [
+        { "type": "start_price", "value": 11800.00 }
+      ]
+    },
+    {
+      "title": "Разработка личного кабинета пользователя",
+      "prices": [
+        { "type": "start_price",  "value": 30000.00 }
+      ]
+    },
+    {
+      "title": "Дизаин сайтов и приложений",
+      "prices": [
+        { "type": "start_price",  "value": 10000.00 }
+      ]
+    },
+    {
+      "title": "Разработка уникального логотипа",
+      "prices": [
+        { "type": "start_price", "value": 3000.00 }
+      ]
+    }
+  ]
+}
