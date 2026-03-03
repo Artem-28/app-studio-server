@@ -1,11 +1,17 @@
 import { MigrationInterface, QueryRunner, TableForeignKey } from 'typeorm';
 import { hCreateTable } from '@/common/utils/database';
-import { PRODUCT_TABLE } from '@/models/product';
 import { GroupCode, PRODUCT_GROUP_TABLE } from '@/models/product-group';
 
-const table = hCreateTable(PRODUCT_TABLE, [
+const table = hCreateTable(PRODUCT_GROUP_TABLE, [
   {
-    name: 'group_code',
+    name: 'code',
+    type: 'enum',
+    enum: Object.values(GroupCode),
+    enumName: 'group_code',
+    isUnique: true,
+  },
+  {
+    name: 'parent_code',
     type: 'enum',
     enum: Object.values(GroupCode),
     enumName: 'group_code',
@@ -17,9 +23,8 @@ const table = hCreateTable(PRODUCT_TABLE, [
     type: 'varchar',
   },
   {
-    name: 'description',
-    type: 'varchar',
-    isNullable: true,
+    name: 'order',
+    type: 'int',
   },
   {
     name: 'publish',
@@ -30,15 +35,15 @@ const table = hCreateTable(PRODUCT_TABLE, [
 
 const foreignKeys = [
   new TableForeignKey({
-    name: 'fk_product-group',
-    columnNames: ['group_code'],
+    name: 'fk_parent-group',
+    columnNames: ['parent_code'],
     referencedColumnNames: ['code'],
     referencedTableName: PRODUCT_GROUP_TABLE,
     onDelete: 'CASCADE',
   }),
 ];
 
-export class CreateProductsTable1772473388776 implements MigrationInterface {
+export class CreateProductGroupsTable1772460349754 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(table, true);
     await queryRunner.createForeignKeys(table, foreignKeys);

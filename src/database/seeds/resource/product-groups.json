@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "code": "development",
+      "title": "Разработка",
+      "order": 100,
+    },
+    {
+      "code": "design",
+      "title": "Дизаин",
+      "order": 200,
+    },
+    {
+      "code": "promotion",
+      "title": "Продвижение",
+      "order": 300,
+    },
+    {
+      "code": "bot",
+      "title": "Чат-боты",
+      "order": 400,
+    }
+  ]
+}

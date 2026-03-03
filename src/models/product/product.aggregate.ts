@@ -1,7 +1,7 @@
 import {
   IsBoolean,
   IsDefined,
-  IsNumber,
+  IsEnum,
   IsOptional,
   IsString,
 } from 'class-validator';
@@ -9,14 +9,15 @@ import { IProductPrice } from '@/models/product-price/product-price.interface';
 import { IProduct, IProductData } from '@/models/product';
 import { BaseAggregate } from '@/models/base';
 import { ProductPriceAggregate } from '@/models/product-price';
+import { GroupCode } from '@/models/product-group';
 
 export class ProductAggregate
   extends BaseAggregate<IProductPrice>
   implements IProduct
 {
   @IsOptional()
-  @IsNumber()
-  public price_id: number;
+  @IsEnum(GroupCode)
+  public group_code: GroupCode | null = null;
 
   @IsString()
   @IsDefined()
@@ -58,6 +59,7 @@ export class ProductAggregate
     return {
       id: this.id,
       title: this.title,
+      group_code: this.group_code,
       description: this.description,
       created_at: this.created_at,
       updated_at: this.updated_at,

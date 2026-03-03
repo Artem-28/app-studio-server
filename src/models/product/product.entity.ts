@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { ProductPriceEntity } from '@/models/product-price';
 import { BaseEntity } from '@/models/base';
+import { GroupCode } from '@/models/product-group';
 
 export const PRODUCT_TABLE = 'products';
 
@@ -8,6 +9,15 @@ export const PRODUCT_TABLE = 'products';
 export class ProductEntity extends BaseEntity {
   @Column()
   public title: string;
+
+  @Column({
+    name: 'group_code',
+    type: 'enum',
+    enum: GroupCode,
+    enumName: 'group_code',
+    nullable: true,
+  })
+  public group_code: GroupCode | null;
 
   @Column({
     name: 'description',
